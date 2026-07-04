@@ -14,6 +14,8 @@ let cookie = 'sexy-feet'
 
 let app = express();
 
+app.use(express.json());
+
 let signedToken = jwt.sign({ fruit : "musk-melons"}, SECRET);
 
 app.get('/xyz',(req, res)=>{
@@ -23,6 +25,12 @@ app.get('/xyz',(req, res)=>{
 
 app.get('/json',(req,res)=>{
     res.json(['a', 1 , false, {'a' : 'pokemon', b : ()=>{console.log("hello")}}])
+})
+
+app.get('/post',(req,res)=>{
+    console.log(req.body);
+    console.log(typeof req.body);
+    res.send("Agiya ji post");
 })
 
 app.get('/end',(req,res)=>{
